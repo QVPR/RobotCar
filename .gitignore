@@ -49,5 +49,8 @@ docs/_build/
 # PyBuilder
 target/
 
+# cache
+.pyc
+
 # conda environments 
 envs

@@ -8,8 +8,11 @@ from tqdm import tqdm, trange
 import PIL
 
 from src.settings import RAW_DIR, READY_DIR
+import src.thirdparty.robotcar_dataset_sdk as sdk
 from src.thirdparty.robotcar_dataset_sdk.python import image
 from src.thirdparty.robotcar_dataset_sdk.python.camera_model import CameraModel
+sdk_dir = os.path.dirname(sdk.__file__)
+models_dir = os.path.join(sdk_dir, "models")
 
 
 def validate_images(traverse, camera):
@@ -34,7 +37,7 @@ def ready_images(traverse, camera, nWorkers=4, overwrite=True):
 	# load and undistort images
 	image_folder_path = os.path.join(RAW_DIR, traverse, camera)
 	cm = CameraModel(
-		RAW_DIR + '/camera-models/', image_folder_path
+		models_dir, image_folder_path
 		)  # this is a variable used in process_and_save_image
 	try:
 		fnames = os.listdir(image_folder_path)
