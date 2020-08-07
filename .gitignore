@@ -51,6 +51,7 @@ target/
 
 # cache
 .pyc
+__pycache__
 
 # conda environments 
 envs
