@@ -44,7 +44,7 @@ def ready_images(traverse, camera, nWorkers=4, overwrite=True):
 	except FileNotFoundError:
 		print("Folder {} not found, please check that this traverse/camera combination exists.")
 		return
-	ready_folder_path = os.path.join(READY_DIR, traverse, camera)
+	ready_folder_path = os.path.join(READY_DIR, traverse, camera, "images")
 	if not overwrite and os.path.exists(ready_folder_path):
 		ready_fnames = os.listdir(ready_folder_path)
 		img_fnames = [img_path for img_path in os.listdir(image_folder_path) 
