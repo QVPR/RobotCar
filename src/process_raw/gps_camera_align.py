@@ -17,13 +17,13 @@ def assign_poses(traverse, camera):
     extrinsics_dir = os.path.join(os.path.dirname(sdk_path), 'extrinsics')
     save_dir = os.path.join(READY_DIR, traverse, camera)
     if not os.path.exists(save_dir):
-        os.mkdirs(save_dir)
+        os.makedirs(save_dir)
     # retrieve list of image tstamps
-    img_folder = os.path.join(READY_DIR, traverse, camera)
+    img_folder = os.path.join(RAW_DIR, traverse, camera)
     img_paths = os.listdir(img_folder)
     if not img_paths:
         raise FileNotFoundError("No images ready! Run ready_images.py on traverse/camera pair first.")
-    tstamps = [int(os.path.basename(img_path)[:-4]) for img_path in img_paths if img_path.endswith(".png")]
+    tstamps = sorted([int(os.path.basename(img_path)[:-4]) for img_path in img_paths if img_path.endswith(".png")])
     rtk_path = os.path.join(RAW_DIR, traverse, 'rtk.csv')
     interp_poses = np.asarray(interpolate_ins_poses(rtk_path, tstamps, use_rtk=True))
     # apply camera extrinsics to INS for abs camera poses. Note extrinsics are relative

@@ -6,7 +6,7 @@ import csv
 import numpy as np
 import pickle
 
-from util import geometry
+from src.util import geometry
 
 processed_path = os.path.abspath("/work/qvpr/data/processed/RobotCar/")
 csv_path = "/work/qvpr/workspace/RobotCar/examples/"

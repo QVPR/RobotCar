@@ -20,7 +20,7 @@ To setup the conda environment will all dependencies, use `conda create --name R
 
 This codebase allows you to undistort and deBayerize the raw images using the `src/process_raw/ready_images.py` script and saves them to the path specified under `READY_DIR` in `src/settings.py`.
 
-## Interpoalte RTK poses to images
+## Interpolate RTK poses to images
 
 This codebase allows you to interpolate the RTK poses to the camera image timestamps for both stereo and monocular cameras. The camera extrinsics relative to the GPS is given, providing poses in a globally consistent coordinate frame for all images. See the `src/process_raw/gps_camera_align.py` script more more information around usage. The output of the poses will be in the file `$READY_DIR/traverse_name/camera_name/camera_poses.csv` in xyzrpy format.
 
